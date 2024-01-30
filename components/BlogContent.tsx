@@ -12,7 +12,7 @@ const BlogContent = ({ posts }: PostProps) => {
 	return (
 		<div className={styles.mainPage}>
 			{posts.map((post) => (
-				<div className={styles.flexContainer}>
+				<div className={styles.flexContainer} key={post?._id}>
 					<Link
 						href={{
 							pathname: `/post/${post?.slug?.current}`,
