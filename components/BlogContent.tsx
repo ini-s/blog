@@ -4,21 +4,22 @@ import Link from "next/link";
 import Image from "next/image";
 
 import styles from "@/styles/Home.module.css";
-import { PostProps } from "@/pages";
 
-export const revalidate = 30;
+import { PostProps } from "@/pages";
 
 const BlogContent = ({ posts }: PostProps) => {
 	return (
 		<div className={styles.mainPage}>
+			<h1 className={styles.heading}>BLOGGERS</h1>
 			{posts.map((post) => (
-				<div className={styles.flexContainer} key={post?._id}>
+				<div className={styles.blogCard} key={post?._id}>
 					<Link
 						href={{
 							pathname: `/post/${post?.slug?.current}`,
 							query: { slug: post?.slug?.current },
 						}}
 						key={post?._id}
+						className={styles.ImageContainer}
 					>
 						<div className={styles.left}>
 							<Image
@@ -30,29 +31,42 @@ const BlogContent = ({ posts }: PostProps) => {
 						</div>
 					</Link>
 					<div className={styles.right}>
-						<div>
+						<div className={styles.categories}>
 							{post?.categories.map((item) => (
-								<p key={item?._id}>{item?.title}</p>
+								<p className={styles.category} key={item?._id}>
+									{item?.title}
+								</p>
 							))}
 						</div>
-						<h2>{post?.title}</h2>
-						<p>{post?.description}</p>
-						<p>
-							{" "}
-							{new Date(post?._createdAt).toLocaleDateString("en-US", {
-								day: "numeric",
-								month: "long",
-								year: "numeric",
-							})}
-						</p>
-						<div className={styles.authorImage}>
-							<Image
-								src={urlFor(post?.author?.image).url()}
-								width={200}
-								height={200}
-								alt="author image"
-							/>
-							<p>{post?.author?.name}</p>
+						<Link
+							href={{
+								pathname: `/post/${post?.slug?.current}`,
+								query: { slug: post?.slug?.current },
+							}}
+							key={post?._id}
+						>
+							<h2 className={styles.title}>{post?.title}</h2>
+						</Link>
+						<p className={styles.description}>{post?.description}</p>
+						<div className={styles.dateAndAuthor}>
+							<p className={styles.date}>
+								{new Date(post?._createdAt).toLocaleDateString("en-US", {
+									day: "numeric",
+									month: "long",
+									year: "numeric",
+								})}
+							</p>
+							<div className={styles.authorImageContainer}>
+								<div className={styles.authorImage}>
+									<Image
+										src={urlFor(post?.author?.image).url()}
+										width={200}
+										height={200}
+										alt="author image"
+									/>
+								</div>
+								<p>{post?.author?.name}</p>
+							</div>
 						</div>
 					</div>
 				</div>
