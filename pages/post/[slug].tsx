@@ -10,28 +10,15 @@ import { PortableText } from "@portabletext/react";
 
 import { RichText } from "@/components/RichText";
 
-import styles from "@/styles/Home.module.css";
+import styles from "@/styles/BlogPage.module.css";
 
 interface Props {
 	params: {
 		slug: string;
 	};
-}
+};
 
 export const revalidate = 30;
-
-export const generateStaticParams = async () => {
-	const query = groq`*[_type == 'post']{
-    slug
-  }`;
-	const slugs: Post[] = await client.fetch(query);
-	const slugRoutes = slugs.map((slug) => slug?.slug?.current);
-	return slugRoutes?.map((slug) => ({
-		params: {
-			slug,
-		},
-	}));
-};
 
 const SlugPage = ({ post }: { post: Post }) => {
 	return (
@@ -45,16 +32,6 @@ const SlugPage = ({ post }: { post: Post }) => {
 						alt="main image"
 					/>
 				</div>
-				{/* <div className={styles.author}>
-					<Image
-						src={urlFor(post?.author?.image).url()}
-						width={200}
-						height={200}
-						alt="author image"
-					/>
-					<p>{post?.author?.name}</p>
-					<p>{post?.author?.description}</p>
-				</div> */}
 			</div>
 			<div className={styles.bodyContainer}>
 				<PortableText value={post?.body} components={RichText} />
@@ -65,13 +42,26 @@ const SlugPage = ({ post }: { post: Post }) => {
 
 export default SlugPage;
 
-export async function getServerSideProps({ params }: Props) {
+export async function getStaticPaths() {
+	const paths: string[] = await client.fetch(
+		groq`*[_type == "post" && defined(slug.current)][].slug.current`
+	);
+
+	return {
+		paths: paths.map((slug) => ({ params: { slug } })),
+		fallback: true,
+	};
+}
+
+export async function getStaticProps({ params }: Props) {
 	const slug = params.slug;
+
 	const query = groq`*[_type == 'post' && slug.current == $slug][0]{
-    ...,
-    body,
-    author->
-  }`;
+		...,
+		body,
+		author->
+	}`;
+
 	const post: Post = await client.fetch(query, { slug });
 
 	return {
