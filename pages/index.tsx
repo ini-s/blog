@@ -12,6 +12,8 @@ export interface PostProps {
 	posts: Post[];
 }
 
+export const revalidate = 30;
+
 const query = groq`*[_type == 'post']{
 	...,
 	author->,
