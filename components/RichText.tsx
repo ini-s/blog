@@ -1,6 +1,6 @@
 import { urlFor } from "@/client";
 
-import styles from "@/styles/Home.module.css";
+import styles from "@/styles/BlogPage.module.css";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -20,11 +20,20 @@ export const RichText = {
 	},
 	number: ({ children }: any) => <ol>{children}</ol>,
 	block: {
-		h1: ({ children }: any) => <h1>{children}</h1>,
-		h2: ({ children }: any) => <h2>{children}</h2>,
-		h3: ({ children }: any) => <h3>{children}</h3>,
-		h4: ({ children }: any) => <h4>{children}</h4>,
-		blockquote: ({ children }: any) => <blockquote>{children}</blockquote>,
+		normal: ({ children }: any) => (
+			<p className={`${styles.bodyText} ${styles.normalText}`}>{children}</p>
+		),
+		h1: ({ children }: any) => (
+			<h1 className={`${styles.bodyText} ${styles.heading1}`}>{children}</h1>
+		),
+		h2: ({ children }: any) => (
+			<h2 className={`${styles.bodyText} ${styles.heading2}`}>{children}</h2>
+		),
+		h3: ({ children }: any) => <h3 className={styles.bodyText}>{children}</h3>,
+		h4: ({ children }: any) => <h4 className={styles.bodyText}>{children}</h4>,
+		blockquote: ({ children }: any) => (
+			<blockquote className={styles.bodyText}>{children}</blockquote>
+		),
 	},
 	marks: {
 		link: ({ children, value }: any) => {
