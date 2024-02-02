@@ -45,6 +45,15 @@
 	transform: scale(1.1);
 }
 
+.dateAndAuthor {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+	align-items: center;
+	justify-content: space-between;
+	padding-top: 5rem;
+}
+
 .authorImage,
 .authorImage > img {
 	border-radius: 50%;
@@ -59,7 +68,7 @@
 	display: flex;
 	gap: 0.5rem;
 	align-items: center;
-	justify-content: flex-end;
+	margin-left: auto;
 }
 
 .authorImageContainer > p {
@@ -130,9 +139,6 @@
 	}
 
 	.dateAndAuthor {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
 		padding-top: 5rem;
 	}
 }
@@ -140,5 +146,12 @@
 @media screen and (min-width: 65.625em) {
 	.blogCard {
 		gap: 2rem;
+	}
+}
+
+@media screen and (min-width: 90em) {
+	.blogCard {
+		max-width: 90rem;
+		margin: 0 auto 2rem;
 	}
 }
