@@ -4,15 +4,15 @@ import { client } from "@/client";
 
 import { groq } from "next-sanity";
 
-import BlogContent from "@/components/BlogContent";
-
 import { Post } from "@/types";
+
+import Blogs from "@/components/Blogs";
 
 export interface PostProps {
 	posts: Post[];
 }
 
-export const revalidate = 30;
+export const revalidate = 60;
 
 const query = groq`*[_type == 'post']{
 	...,
@@ -30,7 +30,7 @@ export default function Home({ posts }: PostProps) {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
-			<BlogContent posts={posts} />
+			<Blogs posts={posts} />
 		</>
 	);
 }

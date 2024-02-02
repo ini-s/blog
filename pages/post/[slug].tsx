@@ -16,9 +16,9 @@ interface Props {
 	params: {
 		slug: string;
 	};
-};
+}
 
-export const revalidate = 30;
+export const revalidate = 60;
 
 const SlugPage = ({ post }: { post: Post }) => {
 	return (
