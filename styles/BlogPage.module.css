@@ -1,0 +1,47 @@
+.postContainer {
+	padding: 2rem;
+	width: 90%;
+	margin: 0 auto;
+	background-color: #fff;
+}
+
+.bodyContainer {
+	padding: 2rem 0;
+}
+
+.bodyText {
+	padding: 0 4rem;
+}
+
+.mainImage {
+	position: relative;
+	height: 31.25rem;
+}
+
+.bodyImage {
+	position: relative;
+	width: 100%;
+	height: 31.25rem;
+	margin-block: 2.5rem;
+}
+
+.bodyImage > img {
+	object-fit: cover;
+}
+
+.heading1,
+.heading2 {
+	margin-bottom: 1rem;
+}
+
+.heading1 {
+	font-size: 2.25rem;
+}
+
+.heading2 {
+	font-size: 1.875rem;
+}
+
+.normalText {
+	padding-bottom: 1rem;
+}
