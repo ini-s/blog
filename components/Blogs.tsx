@@ -7,7 +7,7 @@ import styles from "@/styles/Home.module.css";
 
 import { PostProps } from "@/pages";
 
-const BlogContent = ({ posts }: PostProps) => {
+const Blogs = ({ posts }: PostProps) => {
 	return (
 		<div className={styles.mainPage}>
 			<h1 className={styles.heading}>BLOGGERS</h1>
@@ -27,6 +27,7 @@ const BlogContent = ({ posts }: PostProps) => {
 								width={500}
 								height={500}
 								alt="blog post image"
+								priority
 							/>
 						</div>
 					</Link>
@@ -75,4 +76,4 @@ const BlogContent = ({ posts }: PostProps) => {
 	);
 };
 
-export default BlogContent;
+export default Blogs;
