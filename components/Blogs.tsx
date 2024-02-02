@@ -30,6 +30,9 @@ const Blogs = ({ posts }: PostProps) => {
 								priority
 							/>
 						</div>
+						<div className={styles.blogTitle}>
+							<p>{post?.title}</p>
+						</div>
 					</Link>
 					<div className={styles.right}>
 						<div className={styles.categories}>
