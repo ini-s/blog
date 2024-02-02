@@ -111,6 +111,36 @@
 	font-size: 0.875rem;
 }
 
+.ImageContainer {
+	position: relative;
+}
+
+.blogTitle {
+	position: absolute;
+	left: 50%;
+	bottom: 0;
+	transform: translate(-50%, 0);
+	width: 100%;
+	height: 3rem;
+	opacity: 0;
+	transform: all 0.5s ease;
+	background-color: rgba(0, 0, 0, 0.288);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.blogTitle > P {
+	font-size: 1.5rem;
+	font-weight: 700;
+	color: #fff;
+}
+
+.ImageContainer:hover > .blogTitle {
+	opacity: 1;
+}
+
 @media screen and (min-width: 47.9375em) {
 	.blogCard {
 		display: flex;
@@ -140,6 +170,14 @@
 
 	.dateAndAuthor {
 		padding-top: 5rem;
+	}
+
+	.blogTitle {
+		height: 5rem;
+	}
+
+	.blogTitle > p {
+		font-size: 1.75rem;
 	}
 }
 
