@@ -25,12 +25,14 @@ const SlugPage = ({ post }: { post: Post }) => {
 		<div className={styles.postContainer}>
 			<div>
 				<div className={styles.mainImage}>
-					<Image
-						src={urlFor(post?.mainImage).url()}
-						fill
-						sizes="100%"
-						alt="main image"
-					/>
+					{post?.mainImage && (
+						<Image
+							src={urlFor(post?.mainImage).url()}
+							fill
+							sizes="100%"
+							alt="main image"
+						/>
+					)}
 				</div>
 			</div>
 			<div className={styles.bodyContainer}>
