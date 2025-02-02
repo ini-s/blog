@@ -14,6 +14,7 @@ export interface Post extends Base {
 	slug: Slug;
 	title: string;
 	description: string;
+	comments: Comment[];
 }
 
 interface Author extends Base {
@@ -56,4 +57,11 @@ interface Span {
 interface Category extends Base {
 	description: string;
 	title: string;
+}
+
+interface Comment extends Base {
+	name: string;
+	email: string;
+	comment: string;
+	post: Reference; 
 }
