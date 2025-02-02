@@ -10,7 +10,10 @@
   },
   "dependencies": {
     "@portabletext/react": "^3.2.0",
+    "@sanity/client": "^6.27.2",
+    "@sanity/image-url": "^1.1.0",
     "@sanity/vision": "^3.26.1",
+    "@types/validator": "^13.12.2",
     "next": "14.1.0",
     "next-sanity": "^7.0.17",
     "react": "^18",
