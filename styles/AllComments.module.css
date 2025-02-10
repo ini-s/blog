@@ -1,0 +1,46 @@
+.allCommentsSection {
+  max-width: 31.25rem;
+  margin: 0 auto;
+}
+
+.allCommentsSection > h3 {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  text-transform: capitalize;
+}
+
+.comment {
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+}
+
+.comment:not(:last-child) {
+  border-bottom: 1px solid #bdc3c7;
+}
+
+.comment p:not(:last-child) {
+  margin-bottom: 0.5rem;
+}
+
+.author {
+  font-size: 1.125rem;
+  font-weight: 500;
+}
+
+.comment > div {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.8rem;
+}
+
+.comment > div > span {
+  background-color: #bdc3c7;
+  color: #ffff;
+  height: 2rem;
+  width: 2rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
