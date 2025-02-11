@@ -20,6 +20,9 @@ dependencies:
   '@types/validator':
     specifier: ^13.12.2
     version: 13.12.2
+  dayjs:
+    specifier: ^1.11.13
+    version: 1.11.13
   next:
     specifier: 14.1.0
     version: 14.1.0(@babel/core@7.26.7)(react-dom@18.3.1)(react@18.3.1)
@@ -4779,6 +4782,10 @@ packages:
     engines: {node: '>=0.11'}
     dependencies:
       '@babel/runtime': 7.26.7
+    dev: false
+
+  /dayjs@1.11.13:
+    resolution: {integrity: sha512-oaMBel6gjolK862uaPQOVTA7q3TZhuSvuMQAAglQDOWYO9A91IrAOUJEyKVlqJlHE0vq5p5UXxzdPfMH/x6xNg==}
     dev: false
 
   /debounce@1.2.1:
