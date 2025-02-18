@@ -2,8 +2,6 @@ import { groq } from "next-sanity";
 
 import { Post } from "@/types";
 
-import { client, urlFor } from "@/client";
-
 import Image from "next/image";
 
 import { PortableText } from "@portabletext/react";
@@ -12,6 +10,8 @@ import { RichText } from "@/components/RichText";
 
 import styles from "@/styles/BlogPage.module.css";
 import AddComments from "@/components/AddComments";
+import AllComments from "@/components/AllComments";
+import { client, urlFor } from "@/client";
 
 interface Props {
   params: {
@@ -41,6 +41,7 @@ const SlugPage = ({ post }: { post: Post }) => {
       </div>
 
       <AddComments postId={post?._id} />
+      <AllComments comments={post?.comments || []} />
     </section>
   );
 };
@@ -64,7 +65,12 @@ export async function getStaticProps({ params }: Props) {
   const query = groq`*[_type == 'post' && slug.current == $slug][0]{
 		...,
 		body,
-		author->
+		author->,
+		"comments": *[_type == "comment" && post._ref == ^._id] | order(_createdAt desc) {
+    	name,
+   		comment,
+    	_createdAt
+  }
 	}`;
 
   const post: Post = await client.fetch(query, { slug });
@@ -73,5 +79,6 @@ export async function getStaticProps({ params }: Props) {
     props: {
       post,
     },
+	revalidate: 10,
   };
 }
