@@ -25,6 +25,7 @@ const SlugPage = ({ post }: { post: Post }) => {
   return (
     <section className={styles.postContainer}>
       <div>
+        <h1 className={styles.title}>{post.title}</h1>
         <div className={styles.mainImage}>
           {post?.mainImage && (
             <Image
@@ -79,6 +80,6 @@ export async function getStaticProps({ params }: Props) {
     props: {
       post,
     },
-	revalidate: 10,
+    revalidate: 10,
   };
 }
