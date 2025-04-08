@@ -25,7 +25,7 @@ const SlugPage = ({ post }: { post: Post }) => {
   return (
     <section className={styles.postContainer}>
       <div>
-        <h1 className={styles.title}>{post.title}</h1>
+        <h1 className={styles.title}>{post?.title}</h1>
         <div className={styles.mainImage}>
           {post?.mainImage && (
             <Image
@@ -33,6 +33,7 @@ const SlugPage = ({ post }: { post: Post }) => {
               fill
               sizes="100%"
               alt="main image"
+              priority
             />
           )}
         </div>
