@@ -1,3 +1,5 @@
+import { Toaster } from "sonner";
+
 import "@/styles/globals.css";
 
 import { Roboto } from "next/font/google";
@@ -13,6 +15,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <main className={inter.className}>
       <Component {...pageProps} />
+      <Toaster position="top-center" richColors />
     </main>
   );
 }
