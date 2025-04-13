@@ -30,8 +30,8 @@ interface Image {
 }
 
 interface Reference {
-  _type: "slug";
-  current: string;
+  _type: "reference";
+  _ref: string;
 }
 
 interface Slug {
@@ -62,8 +62,5 @@ interface Category extends Base {
 export interface Comment extends Base {
   name: string;
   comment: string;
-  post: {
-    _type: "reference";
-    _ref: string;
-  };
+  post: Reference;
 }
