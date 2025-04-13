@@ -62,5 +62,8 @@ interface Category extends Base {
 export interface Comment extends Base {
   name: string;
   comment: string;
-  post: Reference;
+  post: {
+    _type: "reference";
+    _ref: string;
+  };
 }
