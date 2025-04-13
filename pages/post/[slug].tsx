@@ -1,6 +1,6 @@
 import { groq } from "next-sanity";
 
-import { Post } from "@/types";
+import { Post, Comment} from "@/types";
 
 import Image from "next/image";
 
@@ -12,6 +12,7 @@ import styles from "@/styles/BlogPage.module.css";
 import AddComments from "@/components/AddComments";
 import AllComments from "@/components/AllComments";
 import { client, urlFor } from "@/client";
+import { useState } from "react";
 
 interface Props {
   params: {
@@ -22,6 +23,12 @@ interface Props {
 export const revalidate = 60;
 
 const SlugPage = ({ post }: { post: Post }) => {
+  const [comments, setComments] = useState<Comment[]>(post?.comments || []);
+
+  const handleCommentAdded = (newComment: Comment) => {
+    setComments((prev) => [newComment, ...prev]);
+  };
+
   return (
     <section className={styles.postContainer}>
       <div>
@@ -42,8 +49,8 @@ const SlugPage = ({ post }: { post: Post }) => {
         <PortableText value={post?.body} components={RichText} />
       </div>
 
-      <AddComments postId={post?._id} />
-      <AllComments comments={post?.comments || []} />
+      <AddComments postId={post?._id} addNewComment={handleCommentAdded} />
+      <AllComments comments={comments} />
     </section>
   );
 };
@@ -81,6 +88,6 @@ export async function getStaticProps({ params }: Props) {
     props: {
       post,
     },
-    revalidate: 10,
+    revalidate: 60,
   };
 }
