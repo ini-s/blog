@@ -1,7 +1,11 @@
 import { useForm } from "react-hook-form";
 import isEmail from "validator/lib/isEmail";
+import { toast } from "sonner";
+
 
 import styles from "@/styles/AddComment.module.css";
+import { client } from "@/client";
+import { Comment } from "@/types";
 
 interface IAddCommentProps {
   name: string;
@@ -15,31 +19,46 @@ const defaultValues = {
   comment: "",
 };
 
-function AddComments({ postId }: { postId: string }) {
+function AddComments({
+  postId,
+  addNewComment,
+}: {
+  postId: string;
+  addNewComment: (comment: Comment) => void;
+}) {
   const {
     register,
     handleSubmit,
     reset,
+    setError,
     formState: { errors, isSubmitting },
   } = useForm<IAddCommentProps>({ defaultValues });
 
   const onSubmit = async (data: IAddCommentProps) => {
     const { name, email, comment } = data;
 
-    const res = await fetch("/api/comment", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ name, email, comment, postId }),
-    });
+    try {
+      const newComment = await client.create({
+        _type: "comment",
+        name,
+        email,
+        comment,
+        post: {
+          _type: "reference",
+          _ref: postId,
+        },
+      });
 
-    if (!res.ok) {
-      console.log("Failed to add comment");
-      return;
+      reset();
+      toast.success("Comment added successfully");
+      addNewComment(newComment as Comment);
+    } catch (err) {
+      console.error("Failed to submit comment", err);
+      setError("comment", {
+        type: "manual",
+        message: "Failed to submit—please try again.",
+      });
     }
-
-    reset();
   };
 
   return (
