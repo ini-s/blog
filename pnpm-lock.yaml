@@ -44,6 +44,9 @@ dependencies:
   sanity:
     specifier: ^3.26.1
     version: 3.72.1(@types/node@20.17.16)(@types/react@18.3.18)(react-dom@18.3.1)(react@18.3.1)(styled-components@6.1.14)(typescript@5.7.3)
+  sonner:
+    specifier: ^2.0.3
+    version: 2.0.3(react-dom@18.3.1)(react@18.3.1)
   styled-components:
     specifier: ^6.0.7
     version: 6.1.14(react-dom@18.3.1)(react@18.3.1)
@@ -9089,6 +9092,16 @@ packages:
 
   /smob@1.5.0:
     resolution: {integrity: sha512-g6T+p7QO8npa+/hNx9ohv1E5pVCmWrVCUzUXJyLdMmftX6ER0oiWY/w9knEonLpnOp6b6FenKnMfR8gqwWdwig==}
+    dev: false
+
+  /sonner@2.0.3(react-dom@18.3.1)(react@18.3.1):
+    resolution: {integrity: sha512-njQ4Hht92m0sMqqHVDL32V2Oun9W1+PHO9NDv9FHfJjT3JT22IG4Jpo3FPQy+mouRKCXFWO+r67v6MrHX2zeIA==}
+    peerDependencies:
+      react: ^18.0.0 || ^19.0.0 || ^19.0.0-rc
+      react-dom: ^18.0.0 || ^19.0.0 || ^19.0.0-rc
+    dependencies:
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
     dev: false
 
   /source-map-js@1.2.1:
