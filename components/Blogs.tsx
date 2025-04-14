@@ -9,7 +9,7 @@ import { urlFor } from "@/client";
 const Blogs = ({ posts }: PostProps) => {
   return (
     <section className={styles.mainPage}>
-      <h1 className={styles.heading}>INI&apos;S BLOG</h1>
+      <h1 className={styles.heading}>BLOG POSTS</h1>
       {posts.map((post) => (
         <div className={styles.blogCard} key={post?._id}>
           <Link
