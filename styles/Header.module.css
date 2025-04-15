@@ -4,9 +4,11 @@
   justify-content: space-between;
   background-color: #ffff;
   padding: 1rem 0;
-  box-shadow:  0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  box-shadow:
+    0 10px 15px -3px rgb(0 0 0 / 0.1),
+    0 4px 6px -4px rgb(0 0 0 / 0.1);
   position: sticky;
-  top:0;
+  top: 0;
   z-index: 10;
 }
 
@@ -17,7 +19,8 @@
   cursor: pointer;
 }
 
-.menu {
+.menu,
+.closeMenu {
   cursor: pointer;
   width: 3rem;
   height: 2rem;
@@ -27,15 +30,39 @@
   font-size: 1.4rem;
 }
 
+.closeMenu {
+  font-size: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.closeMenu {
+  margin-left: auto;
+}
+
 .navList {
-  list-style: none;
   display: none;
+}
+
+.navList,
+.sidebarList {
+  list-style: none;
   align-items: center;
 }
 
-.navItem {
+.sidebarList {
+  margin-top: 2rem;
+  width: 100%;
+  text-align: center;
+}
+
+.navItem,
+.sidebarListItem {
   font-size: 1.2rem;
   cursor: pointer;
+}
+
+.sidebarListItem {
+  margin-bottom: 2rem;
 }
 
 .navItem:not(:last-child) {
@@ -43,8 +70,25 @@
 }
 
 .navItem:hover,
-.navItem a:hover {
+.navItem a:hover,
+.sidebarListItem:hover,
+.sidebarListItem a:hover {
   color: #b0b0b0;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  background-color: #ffff;
+  z-index: 99;
+  height: 100vh;
+  width: 100%;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  transition: 3s ease;
 }
 
 @media screen and (min-width: 47.935em) {
