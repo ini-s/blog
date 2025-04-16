@@ -1,6 +1,11 @@
 import { groq } from "next-sanity";
+import { ReactElement, useState } from "react";
+import { NextPageWithLayout } from "../_app";
+import GeneralLayout from "@/layouts/general-layout.component";
+import { RiArrowLeftSLine } from "react-icons/ri";
+import { useRouter } from "next/router";
 
-import { Post, Comment} from "@/types";
+import { Post, Comment } from "@/types";
 
 import Image from "next/image";
 
@@ -12,7 +17,6 @@ import styles from "@/styles/BlogPage.module.css";
 import AddComments from "@/components/AddComments";
 import AllComments from "@/components/AllComments";
 import { client, urlFor } from "@/client";
-import { useState } from "react";
 
 interface Props {
   params: {
@@ -20,10 +24,14 @@ interface Props {
   };
 }
 
+interface SlugPageProps {
+  post: Post;
+}
 export const revalidate = 60;
 
-const SlugPage = ({ post }: { post: Post }) => {
+const SlugPage: NextPageWithLayout<SlugPageProps> = ({ post }) => {
   const [comments, setComments] = useState<Comment[]>(post?.comments || []);
+  const router = useRouter();
 
   const handleCommentAdded = (newComment: Comment) => {
     setComments((prev) => [newComment, ...prev]);
@@ -31,6 +39,10 @@ const SlugPage = ({ post }: { post: Post }) => {
 
   return (
     <section className={styles.postContainer}>
+      <button className={styles.backBtn} onClick={() => router.push("/")}>
+        <RiArrowLeftSLine />
+      </button>
+
       <div>
         <h1 className={styles.title}>{post?.title}</h1>
         <div className={styles.mainImage}>
@@ -53,6 +65,10 @@ const SlugPage = ({ post }: { post: Post }) => {
       <AllComments comments={comments} />
     </section>
   );
+};
+
+SlugPage.getLayout = function (page: ReactElement) {
+  return <GeneralLayout>{page}</GeneralLayout>;
 };
 
 export default SlugPage;
