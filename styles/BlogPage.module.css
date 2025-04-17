@@ -1,6 +1,5 @@
 .postContainer {
   padding: 2rem;
-  background-color: #fff;
 }
 
 .bodyContainer {
@@ -61,6 +60,27 @@
   padding-bottom: 1rem;
 }
 
+.backBtn {
+  cursor: pointer;
+  color: rgb(147, 145, 145);
+  border-radius: 50%;
+  border: 1.5px solid rgb(147, 145, 145);
+  height: 2rem;
+  width: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+  background: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.backBtn svg {
+  font-size: 1.5rem;
+}
+
 @media screen and (min-width: 27.5em) {
   .mainImage,
   .bodyImage {
@@ -74,7 +94,6 @@
 }
 @media screen and (min-width: 47.9375em) {
   .postContainer {
-    width: 90%;
     margin: 0 auto;
   }
 
@@ -89,6 +108,15 @@
 
   .heading2 {
     font-size: 1.875rem;
+  }
+
+  .backBtn svg {
+    font-size: 1.8rem;
+  }
+
+  .backBtn {
+    height: 2.5rem;
+    width: 2.5rem;
   }
 }
 
