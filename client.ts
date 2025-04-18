@@ -9,7 +9,7 @@ export const client = createClient({
   projectId,
   dataset,
   apiVersion: "2024-02-02",
-  useCdn: true,
+  useCdn: false,
   token,
 });
 
