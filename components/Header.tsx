@@ -15,8 +15,6 @@ function Header() {
   const [active, setIsActive] = useState("home");
   const [openSidebar, setOpenSidebar] = useState(false);
 
-  console.log(openSidebar);
-
   const router = useRouter();
 
   return (
