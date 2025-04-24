@@ -1,0 +1,97 @@
+.footerContainer {
+  position: relative;
+  background-color: rgb(11, 11, 11);
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.socials {
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.socials a {
+  cursor: pointer;
+  transform: all 3s ease;
+  color: #ffff;
+}
+
+.socials a:hover {
+  color: rgb(168, 56, 213);
+  scale: 1.2;
+}
+
+.footerLogo {
+  position: relative;
+  width: 10.625rem;
+  height: 3.125rem;
+  cursor: pointer;
+}
+
+.logoWrapper {
+  width: 10.625rem;
+  height: 1.8rem;
+  margin-bottom: 2rem;
+}
+
+.copyright {
+  text-align: center;
+  color: #ffff;
+  margin-top: 1.5rem;
+}
+
+.copyright p {
+  margin-bottom: 0.5rem;
+  font-size: 0.8rem;
+}
+
+.portfolioLink {
+  cursor: pointer;
+  color: rgb(168, 56, 213);
+}
+
+.line {
+  height: 1px;
+  width: 100%;
+  background-color: rgb(223 223 214 / 0.8);
+  margin-top: 2.5rem;
+}
+
+.divider {
+  display: none;
+}
+
+@media screen and (min-width: 50em) {
+  .footerContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .line {
+    display: none;
+  }
+
+  .copyright {
+    margin-top: 0;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .logoWrapper {
+    margin-bottom: 0;
+  }
+
+  .copyright p {
+    margin-bottom: 0;
+    font-size: 1rem;
+  }
+
+  .divider {
+    display: block;
+  }
+}

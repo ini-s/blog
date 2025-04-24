@@ -1,3 +1,4 @@
+import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Head from "next/head";
 
@@ -20,6 +21,8 @@ const GeneralLayout: FC<IGeneralLayoutProps> = ({ children }) => {
       <Header />
 
       <main>{children}</main>
+
+      <Footer />
     </>
   );
 };
