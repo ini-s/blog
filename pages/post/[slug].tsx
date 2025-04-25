@@ -38,7 +38,7 @@ const SlugPage: NextPageWithLayout<SlugPageProps> = ({ post }) => {
   };
 
   return (
-    <section className={styles.postContainer}>
+    <section className={`fullBleed ${styles.postContainer}`}>
       <button className={styles.backBtn} onClick={() => router.push("/")}>
         <RiArrowLeftSLine />
       </button>

@@ -18,45 +18,54 @@ function Header() {
   const router = useRouter();
 
   return (
-    <header className={styles.headerWrapper}>
-      <div className={styles.logoWrapper}>
-        <Image
-          placeholder="blur"
-          src={Logo}
-          alt="logo"
-          quality={100}
-          onClick={() => router.push("/")}
-        />
-      </div>
-
-      <nav>
-        <div className={styles.menu} onClick={() => setOpenSidebar(true)}>
-          <GiHamburgerMenu />
+    <header className={`fullBleed ${styles.headerContainer}`}>
+      <div className={styles.headerWrapper}>
+        <div className={styles.logoWrapper}>
+          <Image
+            placeholder="blur"
+            src={Logo}
+            alt="logo"
+            quality={100}
+            onClick={() => router.push("/")}
+          />
         </div>
 
-        <ul className={styles.navList}>
-          <li className={styles.navItem} onClick={() => setIsActive("home")}>
-            <Link href="/" style={{ color: active == "home" ? "#b0b0b0" : "" }}>
-              Home
-            </Link>
-          </li>
-          <li
-            className={styles.navItem}
-            onClick={() => setIsActive("portfolio")}
-          >
-            <a
-              href="https://inioluwasoetan.com.ng/"
-              style={{ color: active == "portfolio" ? "#b0b0b0" : "" }}
-            >
-              Portfolio
-            </a>
-          </li>
-        </ul>
-      </nav>
+        <nav>
+          <div className={styles.menu} onClick={() => setOpenSidebar(true)}>
+            <GiHamburgerMenu />
+          </div>
 
-      <ShowView when={openSidebar}>
-        <Sidebar closeSidebar={setOpenSidebar} />
-      </ShowView>
+          <ul className={styles.navList}>
+            <li className={styles.navItem} onClick={() => setIsActive("home")}>
+              <Link
+                href="/"
+                style={{
+                  color: active == "home" ? "rgb(168, 56, 213)" : "",
+                }}
+              >
+                Home
+              </Link>
+            </li>
+            <li
+              className={styles.navItem}
+              onClick={() => setIsActive("portfolio")}
+            >
+              <a
+                href="https://inioluwasoetan.com.ng/"
+                style={{
+                  color: active == "portfolio" ? "rgb(168, 56, 213)" : "",
+                }}
+              >
+                Portfolio
+              </a>
+            </li>
+          </ul>
+        </nav>
+
+        <ShowView when={openSidebar}>
+          <Sidebar closeSidebar={setOpenSidebar} />
+        </ShowView>
+      </div>
     </header>
   );
 }
