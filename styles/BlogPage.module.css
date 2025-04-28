@@ -1,9 +1,9 @@
-.postContainer {
-  padding: 2rem;
-}
-
 .bodyContainer {
   padding: 2rem 0;
+}
+
+.postContainer {
+  padding-top: 4rem;
 }
 
 .mainImage,
@@ -21,7 +21,7 @@
 .title {
   font-size: 2.25rem;
   font-weight: 700;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .bodyText {
@@ -81,6 +81,33 @@
   font-size: 1.5rem;
 }
 
+.authorSection {
+  margin-bottom: 1.25rem;
+}
+
+.authorImgContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-right: 2rem;
+  margin-bottom: 1rem;
+}
+
+.authorImgContainer p {
+  font-weight: 700;
+}
+
+.authorImg {
+  position: relative;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+}
+
+.authorImg img {
+  border-radius: 50%;
+}
+
 @media screen and (min-width: 27.5em) {
   .mainImage,
   .bodyImage {
@@ -90,6 +117,15 @@
   .mainImage > img,
   .bodyImage > img {
     object-fit: cover;
+  }
+
+  .authorSection {
+    display: flex;
+    align-items: center;
+  }
+
+  .authorImgContainer {
+    margin-bottom: 0;
   }
 }
 @media screen and (min-width: 47.9375em) {
@@ -117,6 +153,10 @@
   .backBtn {
     height: 2.5rem;
     width: 2.5rem;
+  }
+
+  .authorImgContainer p {
+    font-size: 1.125rem;
   }
 }
 

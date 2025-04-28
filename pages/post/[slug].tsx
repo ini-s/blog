@@ -45,6 +45,28 @@ const SlugPage: NextPageWithLayout<SlugPageProps> = ({ post }) => {
 
       <div>
         <h1 className={styles.title}>{post?.title}</h1>
+
+        <div className={styles.authorSection}>
+          <div className={styles.authorImgContainer}>
+            <div className={styles.authorImg}>
+              <Image
+                src={urlFor(post?.author?.image).url()}
+                width={200}
+                height={200}
+                alt="author image"
+              />
+            </div>
+            <p>{post?.author?.name}</p>
+          </div>
+          <p className={styles.postDate}>
+            {new Date(post?._createdAt).toLocaleDateString("en-US", {
+              day: "numeric",
+              month: "long",
+              year: "numeric",
+            })}
+          </p>
+        </div>
+
         <div className={styles.mainImage}>
           {post?.mainImage && (
             <Image
