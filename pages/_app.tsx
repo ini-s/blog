@@ -7,7 +7,7 @@ import "@/styles/globals.css";
 
 import { Roboto } from "next/font/google";
 
-const inter = Roboto({
+const roboto = Roboto({
   subsets: ["latin"],
   weight: ["100", "300", "400", "500", "700", "900"],
 });
@@ -22,9 +22,9 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
   const getLayout = Component.getLayout ?? ((page) => page);
 
   return (
-    <main className={inter.className}>
+    <div className={`${roboto.className} mainWrapper`}>
       {getLayout(<Component {...pageProps} />)}
       <Toaster position="top-center" richColors />
-    </main>
+    </div>
   );
 }
