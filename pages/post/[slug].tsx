@@ -49,12 +49,14 @@ const SlugPage: NextPageWithLayout<SlugPageProps> = ({ post }) => {
         <div className={styles.authorSection}>
           <div className={styles.authorImgContainer}>
             <div className={styles.authorImg}>
-              <Image
-                src={urlFor(post?.author?.image).url()}
-                width={200}
-                height={200}
-                alt="author image"
-              />
+              {post?.author?.image && (
+                <Image
+                  src={urlFor(post.author.image).url()}
+                  width={200}
+                  height={200}
+                  alt={post.author.name}
+                />
+              )}
             </div>
             <p>{post?.author?.name}</p>
           </div>
@@ -109,16 +111,19 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }: Props) {
   const slug = params.slug;
 
-  const query = groq`*[_type == 'post' && slug.current == $slug][0]{
-		...,
-		body,
-		author->,
-		"comments": *[_type == "comment" && post._ref == ^._id] | order(_createdAt desc) {
-    	name,
-   		comment,
-    	_createdAt
-  }
-	}`;
+  const query = groq`
+    *[_type == 'post' && slug.current == $slug][0] {
+      ...,  
+      body,
+      author->,            
+      "comments": *[_type=="comment" && post._ref==^._id]
+        | order(_createdAt desc){
+          name,
+          comment,
+          _createdAt
+        }
+    }
+  `;
 
   const post: Post = await client.fetch(query, { slug });
 
