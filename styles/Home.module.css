@@ -140,9 +140,9 @@
   opacity: 1;
 }
 
-@media screen and (min-width: 23.75rem) {
+@media screen and (min-width: 30em) {
   .blogTitle > p {
-    font-size: 1.75rem;
+    font-size: 1.125rem;
   }
 }
 
