@@ -30,6 +30,7 @@
   opacity: 0.9;
   cursor: pointer;
   height: 14rem;
+  width: 100%;
 }
 
 .left > img {
@@ -112,6 +113,10 @@
 
 .ImageContainer {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  text-decoration: none;
 }
 
 .blogTitle {
@@ -125,7 +130,6 @@
   background-color: rgba(0, 0, 0, 0.288);
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
   padding: 0.5rem;
 }
